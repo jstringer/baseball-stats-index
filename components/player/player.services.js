@@ -7,5 +7,5 @@ const getPlayerByName = function(firstName, lastName) {
 }
 
 module.exports = {
-  getPlayerByName
+  getPlayerByName,
 }
