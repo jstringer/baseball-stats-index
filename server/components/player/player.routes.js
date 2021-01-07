@@ -8,4 +8,9 @@ router
   .route('/')
   .get(controllers.getPlayer);
 
+// api/player/match
+router
+  .route('/match')
+  .get(controllers.getPlayerByMatch)
+
 module.exports = router;
