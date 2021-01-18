@@ -7,7 +7,7 @@
       :placeholder="placeholder"
     />
     <ul class="autocomplete-results">
-      <li class="autocomplete-result">
+      <li class="autocomplete-result" v-show="isTyping">
       </li>
     </ul>
   </div>
@@ -26,7 +26,7 @@ export default {
    },
    methods: {
      onInput() {
-
+       
      }
    }
 }
