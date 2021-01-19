@@ -15,7 +15,7 @@ const getPlayer = async (req, res) => {
 }
 
 const getPlayerByMatch = async (req, res) => {
-  const term = req.body.term;
+  const term = req.query.term;
 
   try {
     const player = await playerServices.getPlayerByPartial(term);

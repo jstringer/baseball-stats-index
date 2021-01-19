@@ -8,8 +8,8 @@ const getPlayerByFirstAndLastName = function(nameFirst, nameLast) {
 }
 
 const getPlayerByPartial = function(term) {
-  return db('Baseball.People').select(db.raw("CONCAT_WS(' ', \"nameFirst\", \"nameLast\") AS nameFull"))
-    .where(db.raw("CONCAT_WS(' ', \"nameFirst\", \"nameLast\")"), 'like', `%${term}%`)
+  return db('Baseball.People').select('nameFirst', 'nameLast', 'playerID')
+    .where(db.raw("CONCAT_WS(' ', \"nameFirst\", \"nameLast\")"), 'ilike', `%${term}%`)
 }
 
 module.exports = {
