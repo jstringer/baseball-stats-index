@@ -6,7 +6,12 @@ const router = Router();
 // api/player/
 router
   .route('/')
-  .get(controllers.getPlayer);
+  .get(controllers.getPlayerByName);
+
+// api/player/:id
+router
+  .route('/:id')
+  .get(controllers.getPlayerById);
 
 // api/player/match
 router

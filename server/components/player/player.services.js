@@ -12,7 +12,13 @@ const getPlayerByPartial = function(term) {
     .where(db.raw("CONCAT_WS(' ', \"nameFirst\", \"nameLast\")"), 'ilike', `%${term}%`)
 }
 
+const getPlayerById = function(id) {
+  return db('Baseball.People').select()
+    .where('playerID', id);
+}
+
 module.exports = {
   getPlayerByFirstAndLastName,
-  getPlayerByPartial
+  getPlayerByPartial,
+  getPlayerById
 }
