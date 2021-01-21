@@ -20,11 +20,13 @@ const routes = [
   {
     path: "/player/:id",
     name: "Player",
+    props: true,
     component: Detail
   },
   {
     path: "/team/:id",
     name: "Team",
+    props: true,
     component: Detail
   }
 ];

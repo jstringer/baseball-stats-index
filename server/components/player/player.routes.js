@@ -8,14 +8,14 @@ router
   .route('/')
   .get(controllers.getPlayerByName);
 
-// api/player/:id
-router
-  .route('/:id')
-  .get(controllers.getPlayerById);
-
 // api/player/match
+  router
+    .route('/match')
+    .get(controllers.getPlayerByMatch);
+
+// api/player/:playerId
 router
-  .route('/match')
-  .get(controllers.getPlayerByMatch)
+  .route('/:playerId')
+  .get(controllers.getPlayerStatsById);
 
 module.exports = router;

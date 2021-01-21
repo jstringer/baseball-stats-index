@@ -13,12 +13,26 @@ const getPlayerByPartial = function(term) {
 }
 
 const getPlayerById = function(id) {
-  return db('Baseball.People').select()
-    .where('playerID', id);
+  return db('Baseball.People').select().where('playerID', id);
+}
+
+const getPlayerBattingById = function(id) {
+  return db('Baseball.Batting').select().where('playerID', id);
+}
+
+const getPlayerFieldingById = function(id) {
+  return db('Baseball.Fielding').select().where('playerID', id);
+}
+
+const getPlayerPitchingById = function(id) {
+  return db('Baseball.Pitching').select().where('playerID', id);
 }
 
 module.exports = {
   getPlayerByFirstAndLastName,
   getPlayerByPartial,
-  getPlayerById
+  getPlayerById,
+  getPlayerBattingById,
+  getPlayerFieldingById,
+  getPlayerPitchingById
 }

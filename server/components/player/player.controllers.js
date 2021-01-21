@@ -14,6 +14,24 @@ const getPlayerByName = async (req, res) => {
   }
 }
 
+const getPlayerStatsById = async (req, res) => {
+  const id = req.params.playerId;
+
+  try {
+    let response = {}
+    response.batting = await playerServices.getPlayerBattingById(id);
+    response.fielding = await playerServices.getPlayerFieldingById(id);
+    response.pitching = await playerServices.getPlayerPitchingById(id);
+    response.player = await playerServices.getPlayerById(id);
+
+    res.status(200).json(response);
+  }
+  catch(error) {
+    console.log(error);
+    res.status(400).end();
+  }
+}
+
 const getPlayerById = async (req, res) => {
   const id = req.params.playerId;
 
@@ -44,5 +62,6 @@ const getPlayerByMatch = async (req, res) => {
 module.exports = {
   getPlayerByName,
   getPlayerById,
-  getPlayerByMatch
+  getPlayerByMatch,
+  getPlayerStatsById
 }

@@ -12,7 +12,12 @@
         v-for="item in results"
         :key="item.playerID"
       >
-        <router-link :to="{ name: 'Player', params: { id: item.playerID } }">
+        <router-link
+          :to="{
+            name: 'Player',
+            params: { id: item.playerID, isPlayer: true }
+          }"
+        >
           {{ item.nameFirst + " " + item.nameLast }}
         </router-link>
       </li>

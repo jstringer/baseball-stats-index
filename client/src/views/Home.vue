@@ -1,9 +1,9 @@
 <template>
   <div class="home">
     <h2 class="heading">
-      <b>The Baseball Index</b> is a powerful 
-      <b>historical baseball stat</b> 
-      search engine powered by the 
+      <b>The Baseball Index</b> is a powerful
+      <b>historical baseball stat</b>
+      search engine powered by the
       <b>Lahman Database</b>
     </h2>
     <Search></Search>
