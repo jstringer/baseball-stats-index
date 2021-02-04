@@ -35,17 +35,9 @@ export default {
   font-size: 20px;
 }
 
-.player-info-container {
+.player-bio-column-1 {
   display: flex;
   flex-flow: column wrap;
-  align-items: flex-start;
 }
 
-.player-bio-column-1 {
-  flex-grow: 1;
-}
-
-.player-bio-column-2 {
-  flex-grow: 2;
-}
 </style>

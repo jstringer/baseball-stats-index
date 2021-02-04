@@ -7,6 +7,7 @@
 <script>
 import axios from "axios";
 import PlayerBio from '../components/PlayerBio.vue';
+import Header from "../components/Header.vue"
 
 export default {
   components: { PlayerBio },

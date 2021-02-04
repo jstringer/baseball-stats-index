@@ -62,18 +62,35 @@ export default {
 
 <style>
 .search {
-  position: relative;
-  width: 130px;
+  display: flex;
+  flex-flow: column nowrap;
+  width: 25%;
+  outline: 0;
+  justify-content: center;
+}
+.search-icon {
+  position: absolute;
+  height: 31px;
+}
+
+input {
+  height: 20px;
+  width: 100%;
 }
 
 .autocomplete-results {
+  list-style-type: none;
+  margin-top: 0%;
   border: 1px solid #000000;
-  overflow: auto;
+  max-height: 300px;
+  overflow-y: auto;
 }
 
 .autocomplete-result {
+  border: 1px solid blue;
   text-align: left;
-  padding: 4px 2px;
+  padding-top: 2px;
+  padding-left: 0px;
   cursor: pointer;
 }
 
