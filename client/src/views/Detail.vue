@@ -1,6 +1,7 @@
 <template>
   <div class="detail">
-    <PlayerBio :player="this.player.player[0]"></PlayerBio>
+    <Header></Header>
+    <PlayerBio :player="this.playerInfo"></PlayerBio>
   </div>
 </template>
 
@@ -10,19 +11,19 @@ import PlayerBio from '../components/PlayerBio.vue';
 import Header from "../components/Header.vue"
 
 export default {
-  components: { PlayerBio },
+  components: { PlayerBio, Header },
   props: {
     id: String,
     isPlayer: Boolean
   },
   data() {
     return {
-      player: null
+      playerInfo: null
     };
   },
   created() {
     axios.get(`${process.env.VUE_APP_API}/player/${this.id}`).then(response => {
-      this.player = response.data;
+      this.playerInfo = response.data.player[0];
     });
   }
 };

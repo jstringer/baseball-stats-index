@@ -87,7 +87,7 @@ input {
 }
 
 .autocomplete-result {
-  border: 1px solid blue;
+  color: blanchedalmond;
   text-align: left;
   padding-top: 2px;
   padding-left: 0px;
