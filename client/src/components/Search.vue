@@ -6,22 +6,24 @@
       @input="onInput"
       :placeholder="placeholder"
     />
-    <ul class="autocomplete-results" v-show="isTyping">
-      <li
-        class="autocomplete-result"
-        v-for="item in results"
-        :key="item.playerID"
-      >
-        <router-link
-          :to="{
-            name: 'Player',
-            params: { id: item.playerID, isPlayer: true }
-          }"
+    <div class="results-container" v-show="isTyping"> 
+      <ul class="autocomplete-results">
+        <li
+          class="autocomplete-result"
+          v-for="item in results"
+          :key="item.playerID"
         >
-          {{ item.nameFirst + " " + item.nameLast }}
-        </router-link>
-      </li>
-    </ul>
+          <router-link
+            :to="{
+              name: 'Player',
+              params: { id: item.playerID, isPlayer: true }
+            }"
+          >
+            {{ item.nameFirst + " " + item.nameLast }}
+          </router-link>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -62,6 +64,7 @@ export default {
 
 <style>
 .search {
+  position: relative;
   display: flex;
   flex-flow: column nowrap;
   width: 25%;
@@ -78,12 +81,19 @@ input {
   width: 100%;
 }
 
-.autocomplete-results {
-  list-style-type: none;
-  margin-top: 0%;
-  border: 1px solid #000000;
+.results-container {
+  position: absolute;
   max-height: 300px;
   overflow-y: auto;
+  border: 2px solid black;
+  background-color: white;
+  z-index: 100;
+  top: 20px;
+  width: 100%;
+}
+
+.autocomplete-results {
+  list-style-type: none;
 }
 
 .autocomplete-result {
@@ -92,6 +102,7 @@ input {
   padding-top: 2px;
   padding-left: 0px;
   cursor: pointer;
+  margin: 10px 0 10px 20px;
 }
 
 .autocomplete-result:hover {

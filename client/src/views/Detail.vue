@@ -28,4 +28,9 @@ export default {
   }
 };
 </script>
-<style></style>
+<style>
+.container {
+  width: 960px;
+  margin: 0px auto 0px auto;
+}
+</style>

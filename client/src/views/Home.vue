@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div class="container">
+    <div class="hero">
       <h2 class="heading">
         <b>The Baseball Index</b> is a powerful
         <b>historical baseball stat<br></b>
@@ -34,10 +34,15 @@ export default {
 </script>
 
 <style>
-.container {
-  padding-bottom: 10%;
-  height: 50%;
-  margin-top: 15%;
+
+.home {
+  display: flex;
+  height: 100vh;
+}
+
+.hero {
+  margin: auto;
+  width: 100%;
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -47,7 +52,8 @@ export default {
 .links {
   width: 20%;
   display: flex;
-  justify-content: space-around;
+  flex-flow: row wrap;
+  justify-content: space-between;
   margin-top: 2%;
 }
 </style>
