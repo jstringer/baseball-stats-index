@@ -6,7 +6,7 @@
       @input="onInput"
       :placeholder="placeholder"
     />
-    <div class="results-container" v-show="isTyping"> 
+    <div class="results-container" v-show="isTyping">
       <ul class="autocomplete-results">
         <li
           class="autocomplete-result"
