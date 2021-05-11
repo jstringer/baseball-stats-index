@@ -1,27 +1,27 @@
 <template>
   <div class="sorted-table">
-    <table>
-      <tr class="labels">
-        <th
-          class="row-heading"
-          scope="col"
-          v-for="label in labels"
-          :key="label"
-        >
-          <div 
-            class="sort-button"
-            @click="updateSortKey(label)"
-          >
-            {{ label }}
-          </div>
-        </th>
-      </tr>
-      <tr class="years" v-for="(year, index) in sortedStats" :key="year.yearId">
-        <td class="stat" v-for="stat in sortedStats[index]" :key="stat.id">
-          {{ stat }}
-        </td>
-      </tr>
-    </table>
+    <div class="table-wrapper">
+      <div class="table-scroller">
+        <table>
+          <tr class="labels">
+            <th
+              class="column-heading sort-button"
+              scope="col"
+              v-for="label in labels"
+              :key="label"
+              @click="updateSortKey(label)"
+            >
+              {{ label }}
+            </th>
+          </tr>
+          <tr class="years" v-for="(year, index) in sortedStats" :key="year.yearId">
+            <td class="stat" v-for="stat in sortedStats[index]" :key="stat.id">
+              {{ stat }}
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -73,27 +73,50 @@ export default {
 </script>
 
 <style>
-.row-heading {
+.sorted-table {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.table-wrapper {
+  position: relative;
+}
+
+.table-scroller {
+  overflow-x: scroll;
+  margin-left: 100px;
+}
+
+table {
+  table-layout: auto;
+  border-collapse: separate;
+  border-spacing: 0;
+ }
+
+td {
+  border: 1px solid black;
+  border-bottom: 2px solid black;
+}
+
+th {
+  border: none;
+}
+
+.column-heading:first-child, .stat:first-child{
+  position: absolute;
+  left: 0;
+  top: auto;
+  width: 100px;
+}
+
+.column-heading {
   border: 2px solid black;
   padding: 10px;
   background-color: black;
-}
-
-.sorted-table {
-  border: 2px solid black;
-  margin-top: 10px;
 }
 
 .sort-button {
   cursor: pointer;
 }
 
-table {
-  table-layout: fixed;
-}
-
-td {
-  max-width: 150px;
-  overflow: scroll;
-}
 </style>

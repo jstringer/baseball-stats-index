@@ -16,15 +16,15 @@
             <li><b>Born:</b> {{ this.player.birthDay}}/{{ this.player.birthMonth }}/{{ this.player.birthYear }} <b>in</b> {{ this.player.birthCity }}, {{ this.player.birthState }}, {{ this.player.birthCountry }}</li>
             <li v-if="this.player.deathYear">
               <b>Died:</b> {{ this.player.deathDay }}/{{ this.player.deathMonth }}/{{ this.player.deathYear }} <b>in</b> {{ this.player.deathCity }}, {{ this.player.deathState }}, {{ this.player.deathCountry }}</li>
-            <li><b>Height:</b>{{ this.player.height }}</li>
-            <li><b>Weight:</b>{{ this.player.weight }}</li>
+            <li><b>Height:</b> {{ this.playerHeight}}</li>
+            <li><b>Weight:</b> {{ this.player.weight }}</li>
           </ul>
           <ul class="player-bio column-2">
-            <li><b>Bats:</b>{{ this.player.bats }}</li>
-            <li><b>Throws:</b>{{ this.player.throws }}</li>
-            <li><b>Debut:</b>{{ this.player.debut }}</li>
+            <li><b>Bats:</b> {{ this.player.bats }}</li>
+            <li><b>Throws:</b> {{ this.player.throws }}</li>
+            <li><b>Debut:</b> {{ this.player.debut }}</li>
             <li v-if="this.player.finalGame">
-              <b>Final Game:</b>{{ this.player.finalGame }}
+              <b>Final Game:</b> {{ this.player.finalGame }}
             </li>
           </ul>
         </div>
@@ -35,7 +35,15 @@
 
 <script>
 export default {
-  props: ["player"]
+  props: ["player"],
+  computed: {
+    playerHeight() {
+      let feet = Math.floor(this.player.height / 12);
+      let inches = this.player.height % 12;
+      return `${feet}'${inches}"`;
+    },
+    
+  }
 };
 </script>
 

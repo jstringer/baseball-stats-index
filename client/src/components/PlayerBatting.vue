@@ -1,5 +1,5 @@
 <template>
-  <div class="player-batting stats-container">
+  <div class="player-batting stats-container container">
     <SortedTable :labels="this.tableLabels" :stats="this.battingStats">
     </SortedTable>
   </div>
