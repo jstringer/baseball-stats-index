@@ -1,5 +1,8 @@
 <template>
    <div class="footer">
+      <div class="about">
+         <p>This is a test</p>
+      </div>
    </div>
 </template>
 
@@ -10,5 +13,8 @@ export default {
 </script>
 
 <style>
+   .footer {
+     height: 10vh; 
+   }
 
 </style>

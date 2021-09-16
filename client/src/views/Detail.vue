@@ -3,11 +3,13 @@
     <Header></Header>
     <PlayerBio :player="this.playerInfo"></PlayerBio>
     <h1 v-if="this.playerBatting">Standard Batting</h1>
-    <PlayerBatting v-if="this.playerBatting" :battingStats="this.playerBatting"></PlayerBatting>
+    <Table v-if="this.playerBatting" :stats="this.playerBatting"></Table>
     <h1 v-if="this.playerPitching">Standard Pitching</h1>
-    <PlayerPitching v-if="this.playerPitching" :pitchingStats="this.playerPitching"></PlayerPitching>
+    <Table v-if="this.playerPitching" :stats="this.playerPitching"></Table>
     <h1 v-if="this.playerFielding">Standard Fielding</h1>
-    <PlayerFielding v-if="this.playerFielding" :fieldingStats="this.playerFielding"></PlayerFielding>
+    <Table v-if="this.playerFielding" :stats="this.playerFielding"></Table>
+    <Footer>
+    </Footer>
   </div>
   <div v-else class="loading-image">
     <img src="@/assets/loadingbaseball.gif">
@@ -17,18 +19,16 @@
 <script>
 import axios from "axios";
 import PlayerBio from '../components/PlayerBio.vue';
-import PlayerBatting from "../components/PlayerBatting.vue"
-import PlayerPitching from "../components/PlayerPitching.vue"
-import PlayerFielding from "../components/PlayerFielding.vue"
+import Table from '../components/Table.vue';
 import Header from "../components/Header.vue"
+import Footer from '../components/Footer.vue';
 
 export default {
   components: { 
     Header,
     PlayerBio, 
-    PlayerBatting,
-    PlayerPitching,
-    PlayerFielding
+    Table, 
+    Footer
   },
   props: {
     isPlayer: Boolean
@@ -36,7 +36,7 @@ export default {
   data() {
     return {
       playerInfo: null,
-      playerBatting: null,
+      playerBatting: null, 
       playerPitching: null,
       playerFielding: null,
       loaded: false
@@ -56,12 +56,15 @@ export default {
       axios.get(`${process.env.VUE_APP_API}/player/${playerId}`).then(response => {
         this.loaded = true;
         this.playerInfo = response.data.player[0];
-        if (response.data.batting.length)
+        if (response.data.batting.length) {
           this.playerBatting = response.data.batting;
-        if (response.data.pitching.length) 
-        this.playerPitching = response.data.pitching;
-        if (response.data.fielding.length)
+        } 
+        if (response.data.pitching.length) {
+          this.playerPitching = response.data.pitching;
+        }
+        if (response.data.fielding.length) {
           this.playerFielding = response.data.fielding;
+        }
       });
     }
   }

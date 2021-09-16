@@ -16,16 +16,36 @@ const getPlayerById = function(id) {
   return db('Baseball.People').select().where('playerID', id);
 }
 
-const getPlayerBattingById = function(id) {
-  return db('Baseball.Batting').select().where('playerID', id);
+const getPlayerBattingById = async function(id) {
+  const batting = await db('Baseball.Batting').select().where('playerID', id);
+  batting.forEach(item => {
+    delete item.playerID;
+    delete item.id;
+    delete item.sting;
+  });
+  return batting;
 }
 
-const getPlayerFieldingById = function(id) {
-  return db('Baseball.Fielding').select().where('playerID', id);
+// Pick either async or promises
+
+const getPlayerFieldingById = async function(id) {
+  const fielding = await db('Baseball.Fielding').select().where('playerID', id);
+  fielding.forEach(item => {
+    delete item.playerID;
+    delete item.id;
+    delete item.stint;
+  });
+  return fielding;
 }
 
-const getPlayerPitchingById = function(id) {
-  return db('Baseball.Pitching').select().where('playerID', id);
+const getPlayerPitchingById = async function(id) {
+  const pitching = await db('Baseball.Pitching').select().where('playerID', id);
+  pitching.forEach(item => {
+    delete item.playerID;
+    delete item.id;
+    delete item.stint;
+  });
+  return pitching;
 }
 
 module.exports = {

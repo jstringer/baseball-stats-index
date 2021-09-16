@@ -19,7 +19,9 @@ const getPlayerStatsById = async (req, res) => {
 
   try {
     let response = {}
-    response.batting = await playerServices.getPlayerBattingById(id);
+    playerServices.getPlayerBattingById(id).then(result => {
+      response.batting = result;
+    });
     response.fielding = await playerServices.getPlayerFieldingById(id);
     response.pitching = await playerServices.getPlayerPitchingById(id);
     response.player = await playerServices.getPlayerById(id);

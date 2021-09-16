@@ -7,7 +7,9 @@
       :placeholder="placeholder"
     />
     <div class="results-container" v-show="isTyping">
-      <ul class="autocomplete-results">
+      <ul class="autocomplete-results"
+        @keyup.esc="this.handleClickOutside()"
+      >
         <li
           class="autocomplete-result"
           v-for="item in results"
@@ -40,6 +42,14 @@ export default {
       isTyping: false
     };
   },
+  mounted() {
+    document.addEventListener('click', this.handleClickOutside);
+    document.addEventListener('keypress', this.handleEscapeKey);
+  },
+  destroyed() {
+    document.removeEventListener('click', this.handleClickOutside);
+    document.removeEventListener('keypress', this.handleEscapeKey);
+  },
   methods: {
     onInput() {
       if (this.searchTerm.length >= 3) {
@@ -57,6 +67,14 @@ export default {
         this.results = [];
         this.isTyping = false;
       }
+    },
+    handleClickOutside() {
+    //if(!this.$el.contains(event.target)) 
+      this.isTyping = false;
+    },
+    handleEscapeKey(event) {
+      if(event.keyCode == 27)
+        this.isTyping = false;
     }
   }
 };
